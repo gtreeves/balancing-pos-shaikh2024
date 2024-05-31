@@ -1,0 +1,13 @@
+#!/bin/sh
+# submitted using flags: --ntasks=46  --ntasks-per-node=46 --cpus-per-task=1 --mem=337500 --time=30:00:00    
+    
+echo ${SLURM_JOBID} > MatlabSubmitLOG1/batch_job_id-${SLURM_JOBID}
+# change directory to submission directory
+cd /scratch/user/razeen/trimer/Rmax
+
+# load the Matlab module
+module load Matlab/R2021b
+
+#start matlab, and execute the script
+matlab -nodesktop -nodisplay -logfile MatlabSubmitLOG1/matlab.log -r "addpath('MatlabSubmitLOG1'); matlabsubmit_wrapper; exit"
+    
